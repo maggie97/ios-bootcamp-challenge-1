@@ -100,6 +100,15 @@ class ListViewController: UICollectionViewController {
         cell.pokemon = resultPokemons[indexPath.item]
         return cell
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let nameSegue = segue.identifier, nameSegue == DetailViewController.segueIdentifier {
+            if let selectedItem = sender as? PokeCell,
+               let detailsVC = segue.destination as? DetailViewController{
+                detailsVC.pokemon = selectedItem.pokemon
+            }
+        }
+    }
 
     // MARK: - Navigation
 

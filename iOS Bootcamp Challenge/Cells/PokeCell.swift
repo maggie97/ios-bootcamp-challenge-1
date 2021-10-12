@@ -38,9 +38,9 @@ class PokeCell: UICollectionViewCell {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.font = .boldSystemFont(ofSize: 12)
-        view.textColor = .white.withAlphaComponent(0.8)
+        view.textColor = .white
         view.text = " \(name.capitalized) "
-        view.backgroundColor = .white.withAlphaComponent(0.2)
+        view.backgroundColor = .white
         view.layer.cornerRadius = 6
         view.clipsToBounds = true
         return view

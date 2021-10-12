@@ -160,10 +160,12 @@ class DetailViewController: UIViewController {
             label.textColor = .white
             label.translatesAutoresizingMaskIntoConstraints = false
             label.text = type.capitalized
-            label.backgroundColor = .white.withAlphaComponent(0.30)
+            label.backgroundColor = .white // white.withAlphaComponent(0.30)
             label.layer.cornerRadius = 7.0
             label.layer.masksToBounds = true
-            let paddedWidth = label.intrinsicContentSize.width + padding
+            
+            
+            let paddedWidth = label.intrinsicContentSize.width + CGFloat(padding)
             label.widthAnchor.constraint(equalToConstant: paddedWidth).isActive = true
             typesStackView.addArrangedSubview(label)
         }
