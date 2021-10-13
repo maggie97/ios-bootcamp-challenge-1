@@ -32,16 +32,19 @@ struct PokemonList: Decodable {
 
     let results: [PokemonItem]
     let count: Int
+    let next: String?
 
     enum CodingKeys: String, CodingKey {
         case results
         case count
+        case next
     }
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.results = try container.decode([PokemonItem].self, forKey: .results)
         self.count = try container.decode(Int.self, forKey: .count)
+        self.next = try container.decode(String?.self, forKey: .next)
     }
 
 }
