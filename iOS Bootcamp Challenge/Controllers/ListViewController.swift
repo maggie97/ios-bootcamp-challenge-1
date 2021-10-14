@@ -36,7 +36,8 @@ class ListViewController: UICollectionViewController, SearchBarDelegate {
         setup()
         setupUI()
     }
-
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     // MARK: Setup
 
     private func setup() {
@@ -53,6 +54,8 @@ class ListViewController: UICollectionViewController, SearchBarDelegate {
         
         navigationItem.searchController = searchController
         definesPresentationContext = true
+        
+        activityIndicator.startAnimating()
 
         refresh()
     }
@@ -162,7 +165,7 @@ class ListViewController: UICollectionViewController, SearchBarDelegate {
         else { return }
 
         refreshControl.endRefreshing()
-
+        activityIndicator.stopAnimating()
         filterContentForSearchText("")
     }
 
