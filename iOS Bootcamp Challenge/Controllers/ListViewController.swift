@@ -7,7 +7,8 @@
 
 import UIKit
 
-class ListViewController: UICollectionViewController {
+class ListViewController: UICollectionViewController, SearchBarDelegate {
+   
 
     private var pokemons: [Pokemon] = []
     private var resultPokemons: [Pokemon] = []
@@ -17,7 +18,7 @@ class ListViewController: UICollectionViewController {
     private var latestSearch: String?
 
     lazy private var searchController: SearchBar = {
-        let searchController = SearchBar("Search a pokemon", delegate: nil)
+        let searchController = SearchBar("Search a pokemon", delegate: self)
         searchController.text = latestSearch
         searchController.showsCancelButton = !searchController.isSearchBarEmpty
         return searchController
@@ -49,6 +50,7 @@ class ListViewController: UICollectionViewController {
         navbar.prefersLargeTitles = true
 
         // Set up the searchController parameters.
+        
         navigationItem.searchController = searchController
         definesPresentationContext = true
 
@@ -86,6 +88,19 @@ class ListViewController: UICollectionViewController {
     }
 
     // TODO: Implement the SearchBar
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        print(searchBar.text ?? "")
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        print(searchBar.text ?? "")
+    }
+    
+    func updateSearchResults(for text: String) {
+        filterContentForSearchText(text)
+    }
+    
 
     // MARK: - UICollectionViewDataSource
 
